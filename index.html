@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مشهور الزحراوي | نحول الأفكار إلى مشاريع حقيقية</title>
+  <meta name="description" content="المنصة الرسمية لمشهور الزحراوي - استشارات أعمال، تحويل الأفكار إلى مشاريع، ومجتمع لعرض المشاريع أمام المستثمرين." />
+
+  <!-- الخطوط العربية والإنجليزية الرسمية والفخمة -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       1. المتغيرات والأساسيات (Design System)
+       ========================================================= */
+    :root {
+      --bg-dark: #0b0c0e;
+      --bg-card: #131418;
+      --bg-card-hover: #191b22;
+      --border-color: rgba(255, 255, 255, 0.08);
+      
+      /* ألوان هوية مشهور الزحراوي */
+      --primary-red: #bd1424;
+      --deep-red: #68050e;
+      --glow-red: #e62335;
+      
+      --text-white: #ffffff;
+      --text-muted: #8e909a;
+      --text-dim: #5c5e68;
+
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --container-width: 1220px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+      background: radial-gradient(circle at 80% 20%, rgba(189, 20, 36, 0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 10% 60%, rgba(104, 5, 14, 0.1) 0%, transparent 40%),
+                  var(--bg-dark);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    .container {
+      width: min(var(--container-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       2. شريط التنقل العلوي (Navbar)
+       ========================================================= */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 22px 0;
+      transition: var(--transition-smooth);
+    }
+
+    .header.scrolled {
+      padding: 14px 0;
+      background: rgba(11, 12, 14, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* الشعار الرسمي MZ */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+
+    .logo-mz-monogram {
+      font-family: 'Cinzel', Georgia, serif;
+      font-weight: 900;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -3px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-mz-monogram .m-char {
+      color: var(--text-white);
+    }
+
+    .logo-mz-monogram .z-char {
+      color: var(--glow-red);
+      transform: translateX(-6px) skewX(-10deg);
+      display: inline-block;
+      text-shadow: 0 0 15px rgba(230, 35, 53, 0.4);
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title-ar {
+      font-weight: 900;
+      font-size: 17px;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-title-en {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 2.2px;
+      direction: ltr;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-white);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--glow-red);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, var(--glow-red) 0%, var(--primary-red) 100%);
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(189, 20, 36, 0.3);
+    }
+
+    .btn-red:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(230, 35, 53, 0.45);
+      background: linear-gradient(135deg, #ff2c41 0%, var(--primary-red) 100%);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      color: #fff;
+      font-size: 26px;
+    }
+
+    /* =========================================================
+       3. الواجهة الرئيسية (Hero Section)
+       ========================================================= */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 140px 0 80px;
+      overflow: hidden;
+    }
+
+    /* خلفية فخمة مدمجة مع لمسات الهوية */
+    .hero-watermark {
+      position: absolute;
+      left: -2%;
+      top: 15%;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(220px, 35vw, 480px);
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.015);
+      user-select: none;
+      pointer-events: none;
+      line-height: 0.8;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      background: rgba(230, 35, 53, 0.08);
+      border: 1px solid rgba(230, 35, 53, 0.25);
+      color: #ff5263;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--glow-red);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--glow-red);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 5.2vw, 72px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title .text-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, #a5a7b3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title .highlight {
+      position: relative;
+      display: inline-block;
+      color: #ff3b4e;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .stats-row {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 30px;
+    }
+
+    .stat-item h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* الجانب البصري - صورة مشهور مع درع الإضاءة والتأثيرات */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .portrait-card {
+      position: relative;
+      width: min(440px, 100%);
+      aspect-ratio: 1 / 1.15;
+      border-radius: 28px;
+      background: radial-gradient(circle at 50% 30%, #880917 0%, #161820 85%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+    }
+
+    /* صورة البورتريه الكرتونية المرفقة */
+    .portrait-img {
+      width: 90%;
+      height: 95%;
+      object-fit: contain;
+      object-position: bottom center;
+      z-index: 2;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
+      transition: transform 0.5s ease;
+    }
+
+    .portrait-card:hover .portrait-img {
+      transform: scale(1.03);
+    }
+
+    /* كرت فلوتينج عائم يعطي شعور الستارتب والشبابية */
+    .floating-glass-card {
+      position: absolute;
+      bottom: 24px;
+      right: -15px;
+      z-index: 3;
+      background: rgba(19, 20, 24, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      animation: floatSmooth 4s ease-in-out infinite;
+    }
+
+    @keyframes floatSmooth {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .floating-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--glow-red);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    /* =========================================================
+       4. العناوين المشتركة للأقسام
+       ========================================================= */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 50px;
+    }
+
+    .section-header.center {
+      text-align: center;
+    }
+
+    .section-tag {
+      color: var(--glow-red);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-tag::before {
+      content: "";
+      width: 20px;
+      height: 2px;
+      background: var(--glow-red);
+    }
+
+    .section-title {
+      font-size: clamp(30px, 3.8vw, 46px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.25;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 620px;
+      margin-top: 14px;
+    }
+
+    .section-header.center .section-subtitle {
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       5. قسم الخدمات والاستشارات (Services)
+       ========================================================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 30px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(230, 35, 53, 0.35);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .service-number {
+      font-family: 'Cinzel', serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.08);
+      margin-bottom: 15px;
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover .service-number {
+      color: var(--glow-red);
+    }
+
+    .service-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       6. قسم مجتمع المشاريع والتمويل (Social Community Platform)
+       ========================================================= */
+    .community-section {
+      background: linear-gradient(180deg, rgba(19, 20, 24, 0.4) 0%, rgba(11, 12, 14, 0.9) 100%);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .community-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: var(--transition-smooth);
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: #fff;
+      color: #0b0c0e;
+      border-color: #fff;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-card:hover {
+      border-color: rgba(230, 35, 53, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--glow-red), var(--deep-red));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .user-meta strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .user-meta span {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .project-tag {
+      background: rgba(230, 35, 53, 0.1);
+      color: var(--glow-red);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    .project-card-body h4 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .project-card-body p {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.7;
+      min-height: 68px;
+    }
+
+    .project-funding-box {
+      margin: 18px 0;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 12px 14px;
+      border-radius: 12px;
+    }
+
+    .funding-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .funding-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .funding-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-red), var(--glow-red));
+      border-radius: 10px;
+    }
+
+    .project-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .like-btn {
+      background: transparent;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: var(--transition-smooth);
+    }
+
+    .like-btn.liked {
+      color: var(--glow-red);
+    }
+
+    .like-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* =========================================================
+       7. يوتيوب وصناعة المحتوى (YouTube Showcase)
+       ========================================================= */
+    .youtube-banner {
+      background: radial-gradient(circle at 100% 50%, rgba(189, 20, 36, 0.2), transparent 50%), var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 28px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .yt-info h3 {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .yt-info p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+      line-height: 1.8;
+    }
+
+    .yt-video-mockup {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: #1e2029;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    }
+
+    .play-glow-btn {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--glow-red);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 26px;
+      box-shadow: 0 0 35px rgba(230, 35, 53, 0.7);
+      transition: var(--transition-smooth);
+    }
+
+    .yt-video-mockup:hover .play-glow-btn {
+      transform: scale(1.15);
+    }
+
+    /* =========================================================
+       8. تذييل الصفحة (Footer)
+       ========================================================= */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 70px 0 30px;
+      background: #08080a;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 360px;
+      margin: 18px 0;
+      line-height: 1.8;
+    }
+
+    .footer-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--glow-red);
+    }
+
+    .copyright {
+      border-top: 1px solid var(--border-color);
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+
+    /* =========================================================
+       9. نافذة إضافة مشروع (Interactive Modal)
+       ========================================================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      width: min(600px, 100%);
+      border-radius: 24px;
+      padding: 36px;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+      animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.95) translateY(15px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--glow-red);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 13px 16px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      border-color: var(--glow-red);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    /* =========================================================
+       10. متجاوب لجميع الشاشات والهواتف (Mobile Responsiveness)
+       ========================================================= */
+    @media (max-width: 992px) {
+      .hero-grid,
+      .youtube-banner,
+      .services-grid,
+      .projects-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        text-align: center;
+        padding-top: 130px;
+      }
+
+      .hero-desc {
+        margin-inline: auto;
+      }
+
+      .hero-buttons,
+      .stats-row {
+        justify-content: center;
+      }
+
+      .nav-links,
+      .nav-actions .btn-glass {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links.active-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 20px;
+        right: 20px;
+        background: #14161c;
+        padding: 25px;
+        border-radius: 18px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .stats-row {
+        gap: 20px;
+      }
+      .stat-item h4 {
+        font-size: 24px;
+      }
+      .community-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .floating-glass-card {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 12px;
+        width: 88%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- شريط التنقل الرئيسي -->
+  <header class="header" id="navbar">
+    <div class="container nav-container">
+      
+      <!-- الشعار المرفق لمشهور الزحراوي -->
+      <a href="#home" class="brand-logo" aria-label="الرئيسية">
+        <div class="logo-mz-monogram">
+          <span class="m-char">M</span><span class="z-char">Z</span>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-title-ar">مشهور الزحراوي</span>
+          <span class="brand-title-en">MASHHOUR ALZAHRAWI</span>
+        </div>
+      </a>
+
+      <!-- روابط الصفحة -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">الرئيسية</a></li>
+        <li><a href="#services">الخدمات والاستشارات</a></li>
+        <li><a href="#community">مجتمع المشاريع</a></li>
+        <li><a href="#youtube">المحتوى</a></li>
+      </ul>
+
+      <!-- أزرار الإجراء -->
+      <div class="nav-actions">
+        <button class="btn btn-red open-modal-trigger">+ اعرض مشروعك</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">☰</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي (Hero) -->
+  <section class="hero" id="home">
+    <div class="hero-watermark">MZ</div>
+    <div class="container hero-grid">
+      
+      <div class="hero-text-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          منصة تحويل الأفكار إلى واقع ريادي
+        </div>
+
+        <h1 class="hero-title">
+          <span class="text-gradient">لا تبقِ فكرتك حبراً على ورق،</span><br />
+          اصنع منها <span class="highlight">مشروعاً حقيقياً.</span>
+        </h1>
+
+        <p class="hero-desc">
+          مساحة واستشارات لرواد الأعمال الشباب والمبدعين يقودها مشهور الزحراوي؛ لمساعدتك على صياغة نموذج عملك، إطلاق مشروعك، والوصول إلى مستثمرين حقيقيين.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-red open-modal-trigger">
+            اعرض فكرتك للتمويل ←
+          </button>
+          <a href="https://www.youtube.com/@MashHourAlzahrawi" target="_blank" rel="noopener" class="btn btn-glass">
+            ▶ استكشف قناة اليوتيوب
+          </a>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <h4>+120K</h4>
+            <p>مجتمع مهتم بالأعمال</p>
+          </div>
+          <div class="stat-item">
+            <h4>+65</h4>
+            <p>مشروع تم توجيهه</p>
+          </div>
+          <div class="stat-item">
+            <h4>100%</h4>
+            <p>توجيه عملي واقعي</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- العنصر البصري الفاخر المستلهم من الصورة المرفقة -->
+      <div class="hero-visual">
+        <div class="portrait-card">
+          <!-- الصورة الكرتونية المرفقة بدقة عالية -->
+          <img 
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
+            alt="مشهور الزحراوي" 
+            class="portrait-img"
+            id="heroPortrait"
+          />
+        </div>
+
+        <div class="floating-glass-card">
+          <div class="floating-icon">🚀</div>
+          <div>
+            <strong style="display:block; font-size:14px;">جاهز للانطلاق؟</strong>
+            <span style="font-size:12px; color:var(--text-muted);">جلسات توجيه أسبوعية مع مشهور</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- قسم الخدمات (Services) -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">استشارات وخدمات</span>
+        <h2 class="section-title">كيف نساعدك على بناء مشروعك؟</h2>
+        <p class="section-subtitle">خطوات مدروسة تنقلك من مرحلة الفكرة المشوشة إلى بناء منتج يطلبه السوق.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <div class="service-icon">💡</div>
+          <h3>جلسات دراسة الجدوى وتفنيد الفكرة</h3>
+          <p>جلسة فردية مباشرة لتشريح فكرتك، واختبار مدى قابليتها للتطبيق في السوق، ومعرفة نقاط القوة والضعف قبل خسارة دولار واحد.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <div class="service-icon">📈</div>
+          <h3>بناء نموذج العمل والاستراتيجية</h3>
+          <p>تحويل الفكرة إلى نموذج ربحي واضح (Business Model)، تحديد الجمهور المستهدف، ووضع خطة تسعير وتسويق ذكية.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <div class="service-icon">🤝</div>
+          <h3>تجهيز العرض الاستثماري (Pitch Deck)</h3>
+          <p>مساعدتك في تجهيز عرضك التقديمي والتحدث بلغة المستثمرين للحصول على تمويل أو شراكات استراتيجية تدفعك للأمام.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم مجتمع المشاريع التفاعلي (Social Projects Community) -->
+  <section class="community-section" id="community">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-tag">مجتمع المشاريع والتمويل</span>
+        <h2 class="section-title">مساحة عرض مشاريع الشباب</h2>
+        <p class="section-subtitle">منصة مفتوحة تشبه شبكة أعمال تفاعلية؛ اعرض فكرتك أو مشروعك هنا لفتح أبواب الشراكة والاستثمار.</p>
+      </div>
+
+      <!-- أشرطة الفلترة وزر الإضافة السريع -->
+      <div class="community-toolbar">
+        <div class="filter-tabs">
+          <button class="tab-btn active" data-filter="all">جميع المشاريع</button>
+          <button class="tab-btn" data-filter="tech">تقنية وذكاء اصطناعي</button>
+          <button class="tab-btn" data-filter="ecommerce">تجارة إلكترونية</button>
+          <button class="tab-btn" data-filter="creative">إبداعي وصناعة محتوى</button>
+        </div>
+
+        <button class="btn btn-red open-modal-trigger" style="padding: 10px 18px; font-size: 13px;">
+          + شارك مشروعك الآن
+        </button>
+      </div>
+
+      <!-- شبكة المشاريع (سيتم تحديثها تلقائياً عند إضافة أي مشروع جديد) -->
+      <div class="projects-grid" id="projectsContainer">
+        
+        <!-- كرت مشروع 1 -->
+        <article class="project-card" data-category="tech">
+          <div>
+            <div class="project-card-header">
+              <div class="user-info">
+                <div class="user-avatar">س</div>
+                <div class="user-meta">
+                  <strong>سالم التميمي</strong>
+                  <span>منذ 3 ساعات</span>
+                </div>
+              </div>
+              <span class="project-tag">تقنية</span>
+            </div>
+            <div class="project-card-body">
+              <h4>تطبيق "حرفتي" للأعمال الميدانية</h4>
+              <p>تطبيق يربط الفنيين المهرة بالعملاء مباشرة عبر الذكاء الاصطناعي لتقدير تكلفة الصيانة بدقة وسرعة.</p>
+            </div>
+          </div>
+          <div>
+            <div class="project-funding-box">
+              <div class="funding-row">
+                <span>التمويل المطلوب</span>
+                <span style="color:var(--glow-red)">65% مكتمل</span>
+              </div>
+              <div class="funding-bar">
+                <div class="funding-fill" style="width: 65%;"></div>
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <button class="like-btn" onclick="toggleLike(this)">❤️ <span>142</span> إعجاب</button>
+              <span>💬 28 تعليق واستفسار</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- كرت مشروع 2 -->
+        <article class="project-card" data-category="ecommerce">
+          <div>
+            <div class="project-card-header">
+              <div class="user-info">
+                <div class="user-avatar" style="background:#8b148b;">ر</div>
+                <div class="user-meta">
+                  <strong>رنا عبد العزيز</strong>
+                  <span>منذ 8 ساعات</span>
+                </div>
+              </div>
+              <span class="project-tag">تجارة إلكترونية</span>
+            </div>
+            <div class="project-card-body">
+              <h4>علامة "نقاء" للمنتجات العضوية</h4>
+              <p>متجر إلكتروني يجمع منتجات العناية الطبيعية المستخلصة محلياً ويوصلها بتغليف صديق للبيئة.</p>
+            </div>
+          </div>
+          <div>
+            <div class="project-funding-box">
+              <div class="funding-row">
+                <span>التمويل المطلوب</span>
+                <span style="color:var(--glow-red)">40% مكتمل</span>
+              </div>
+              <div class="funding-bar">
+                <div class="funding-fill" style="width: 40%;"></div>
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <button class="like-btn" onclick="toggleLike(this)">❤️ <span>89</span> إعجاب</button>
+              <span>💬 15 تعليق واستفسار</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- كرت مشروع 3 -->
+        <article class="project-card" data-category="creative">
+          <div>
+            <div class="project-card-header">
+              <div class="user-info">
+                <div class="user-avatar" style="background:#0e685a;">ك</div>
+                <div class="user-meta">
+                  <strong>كريم عثمان</strong>
+                  <span>أمس</span>
+                </div>
+              </div>
+              <span class="project-tag">إبداعي</span>
+            </div>
+            <div class="project-card-body">
+              <h4>ستوديو صوتي للبودكاست المستقل</h4>
+              <p>مساحات تسجيل متطورة مجهزة للشباب مع خدمة المونتاج والتوزيع الرقمي بمقابل رمزي.</p>
+            </div>
+          </div>
+          <div>
+            <div class="project-funding-box">
+              <div class="funding-row">
+                <span>التمويل المطلوب</span>
+                <span style="color:var(--glow-red)">85% مكتمل</span>
+              </div>
+              <div class="funding-bar">
+                <div class="funding-fill" style="width: 85%;"></div>
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <button class="like-btn" onclick="toggleLike(this)">❤️ <span>310</span> إعجاب</button>
+              <span>💬 54 تعليق واستفسار</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم يوتيوب (YouTube Showcase) -->
+  <section id="youtube">
+    <div class="container">
+      <div class="youtube-banner">
+        <div class="yt-info">
+          <span class="section-tag">محتوى ملهم ومجاني</span>
+          <h3>شاهد رحلة تحويل الأفكار خطوة بخطوة</h3>
+          <p>
+            على قناتي في يوتيوب أشاركك خلاصة تجارب، أخطاء المشاريع الناشئة، ومقابلات واقعية مع أشخاص بنوا أعمالهم من الصفر.
+          </p>
+          <a href="https://www.youtube.com/@MashHourAlzahrawi" target="_blank" rel="noopener" class="btn btn-red">
+            اشترك في القناة الآن ▶
+          </a>
+        </div>
+
+        <div class="yt-video-mockup">
+          <a href="https://www.youtube.com/@MashHourAlzahrawi" target="_blank" rel="noopener" class="play-glow-btn" aria-label="مشاهدة على يوتيوب">
+            ▶
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر الرسمي -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div>
+          <div class="logo-mz-monogram" style="margin-bottom: 12px;">
+            <span class="m-char">M</span><span class="z-char">Z</span>
+          </div>
+          <strong style="font-size: 18px;">مشهور الزحراوي</strong>
+          <p class="footer-desc">
+            منصة ريادية شبابية تهدف إلى إشعال روح المبادرة، وتقديم التوجيه الحقيقي لكل شاب يمتلك فكرة ويريد أن يجعلها واقعاً.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">روابط سريعة</h4>
+          <ul class="footer-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#services">الاستشارات والخدمات</a></li>
+            <li><a href="#community">مجتمع المشاريع</a></li>
+            <li><a href="#youtube">قناة اليوتيوب</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">للتواصل المباشر</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:contact@mashhouralzahrawi.com">contact@mashhouralzahrawi.com</a></li>
+            <li><a href="https://www.youtube.com/@MashHourAlzahrawi" target="_blank">قناة اليوتيوب الرسمية</a></li>
+            <li>متاح للمشاريع والشراكات في العالم العربي</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        <span>© 2025 مشهور الزحراوي. جميع الحقوق محفوظة.</span>
+        <span>صُمم ليكون انطلاقة حقيقية للأفكار الشبابية.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- النافذة المنبثقة التفاعلية لإضافة مشروع (Modal) -->
+  <div class="modal-backdrop" id="projectModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="إغلاق">×</button>
+      
+      <h3 style="font-size:22px; margin-bottom:6px;">اعرض فكرتك أو مشروعك</h3>
+      <p style="color:var(--text-muted); font-size:13px; margin-bottom:20px;">
+        سيتم إدراج فكرتك مباشرة داخل المجتمع لتراها وتختبر تفاعل الزوار والمستثمرين معها!
+      </p>
+
+      <form id="newProjectForm">
+        <div class="form-group">
+          <label for="authorName">اسمك الكامل</label>
+          <input type="text" id="authorName" class="form-control" placeholder="مثال: يوسف خالد" required />
+        </div>
+
+        <div class="form-group">
+          <label for="projectTitle">عنوان الفكرة أو المشروع</label>
+          <input type="text" id="projectTitle" class="form-control" placeholder="مثال: روبوت تنظيف ذكي" required />
+        </div>
+
+        <div class="form-group">
+          <label for="projectCategory">مجال المشروع</label>
+          <select id="projectCategory" class="form-control" required>
+            <option value="tech">تقنية وذكاء اصطناعي</option>
+            <option value="ecommerce">تجارة إلكترونية</option>
+            <option value="creative">إبداعي وصناعة محتوى</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="projectDesc">نبذة مختصرة عن فكرتك</label>
+          <textarea id="projectDesc" class="form-control" placeholder="اشرح المشكلة والحل وهدفك من المشروع..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-red" style="width: 100%; padding: 14px; margin-top: 10px;">
+          نشر المشروع في المجتمع الآن 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- جافاسكريبت التفاعلي بدون أخطاء -->
+  <script>
+    // 1. تأثير شريط التنقل عند النزول
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 2. القائمة في الجوال
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active-mobile');
+    });
+
+    // إغلاق القائمة عند الضغط على أي رابط في الجوال
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active-mobile'));
+    });
+
+    // 3. فتح وإغلاق النافذة المنبثقة (Modal)
+    const modal = document.getElementById('projectModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalTriggers = document.querySelectorAll('.open-modal-trigger');
+
+    modalTriggers.forEach(btn => {
+      btn.addEventListener('click', () => modal.classList.add('open'));
+    });
+
+    closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+
+    // 4. فلترة المشاريع
+    const filterButtons = document.querySelectorAll('.tab-btn');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        const cards = document.querySelectorAll('.project-card');
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 5. زر الإعجاب التفاعلي
+    function toggleLike(button) {
+      const countSpan = button.querySelector('span');
+      let count = parseInt(countSpan.textContent, 10);
+      if (button.classList.contains('liked')) {
+        button.classList.remove('liked');
+        countSpan.textContent = count - 1;
+      } else {
+        button.classList.add('liked');
+        countSpan.textContent = count + 1;
+      }
+    }
+
+    // 6. إضافة مشروع جديد ديناميكياً وعرضه فوراً
+    const newProjectForm = document.getElementById('newProjectForm');
+    const projectsContainer = document.getElementById('projectsContainer');
+
+    newProjectForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('authorName').value;
+      const title = document.getElementById('projectTitle').value;
+      const category = document.getElementById('projectCategory').value;
+      const desc = document.getElementById('projectDesc').value;
+
+      const categoryNames = {
+        'tech': 'تقنية',
+        'ecommerce': 'تجارة إلكترونية',
+        'creative': 'إبداعي'
+      };
+
+      const firstLetter = name.trim().charAt(0) || 'م';
+
+      // إنشاء بطاقة المشروع الجديد
+      const newCard = document.createElement('article');
+      newCard.className = 'project-card';
+      newCard.setAttribute('data-category', category);
+      newCard.innerHTML = `
+        <div>
+          <div class="project-card-header">
+            <div class="user-info">
+              <div class="user-avatar" style="background: var(--glow-red);">${firstLetter}</div>
+              <div class="user-meta">
+                <strong>${name}</strong>
+                <span>الآن</span>
+              </div>
+            </div>
+            <span class="project-tag">${categoryNames[category]}</span>
+          </div>
+          <div class="project-card-body">
+            <h4>${title}</h4>
+            <p>${desc}</p>
+          </div>
+        </div>
+        <div>
+          <div class="project-funding-box">
+            <div class="funding-row">
+              <span>التمويل المطلوب</span>
+              <span style="color:var(--glow-red)">10% جديد</span>
+            </div>
+            <div class="funding-bar">
+              <div class="funding-fill" style="width: 10%;"></div>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <button class="like-btn" onclick="toggleLike(this)">❤️ <span>1</span> إعجاب</button>
+            <span>💬 0 تعليقات</span>
+          </div>
+        </div>
+      `;
+
+      // إدراج المشروع في بداية القائمة
+      projectsContainer.prepend(newCard);
+
+      // إعادة تعيين النموذج وإغلاق النافذة
+      newProjectForm.reset();
+      modal.classList.remove('open');
+
+      // تمرير الشاشة لقسم المشاريع ليراها المستخدم
+      document.getElementById('community').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
